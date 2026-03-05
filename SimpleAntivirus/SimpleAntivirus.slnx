@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SimpleAntivirus/SimpleAntivirus.vcxproj" Id="8777bb65-7c48-4161-8165-5d624955b028" />
+</Solution>

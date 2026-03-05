@@ -1,0 +1,27 @@
+# Visual Studio 2026 C++ 프로젝트 최적화 규칙
+
+# 빌드 출력물 (가장 용량이 큼)
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio IDE 전용 캐시 및 설정 (절대 올리면 안 됨)
+.vs/
+*.user
+*.suo
+*.db
+*.opendb
+*.VC.db
+
+# 아까 문제를 일으킨 거대 프리컴파일 헤더 파일
+*.ipch
+*.pch
+
+# 임시 및 로그 파일
+*.log
+*.tmp
+*.tlog
+*.lastbuildstate
