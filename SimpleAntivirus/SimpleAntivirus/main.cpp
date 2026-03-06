@@ -33,26 +33,20 @@ int main(void) {
 	char buffer[2];
 	DWORD bytesRead; //실제로 읽은 바이트 수를 저장할 변수
 
-	//2. 파일 읽기 요청
-	//fFile 키를 사용해, 2바이트만 읽어 buffer에 담는다. 다 읽으면 bytesRead에 보고한다.
-	if (ReadFile(hFile, buffer, 2, &bytesRead, NULL)) {
+	char* fileBuffer = new char[fileSize];
 
-		//3. 내용 확인 (MZ 체크)
-		if (bytesRead == 2 && buffer[0] == 'M' && buffer[1] == 'Z') {
-			std::cout << "이 파일은 유효한 실행 파일(MZ)입니다." << std::endl;
-		}
-		else {
-			std::cout << "실행 파일 형식이 아니거나 읽기에 실패했습니다." << std::endl;
-		}
+	if (ReadFile(hFile, fileBuffer, fileSize, &bytesRead, NULL)) {
+		std::cout << "파일 전체를 메모리에 로드 했습니다. (" << bytesRead << " bytes)" << std::endl;
+
+		//이제 fileBuffer[0] 부터 fileBufer[fileSize-1] 까지 모든 데이터를 검사 할 수 있다.
 	}
-	else {
-		std::cout << "파일 읽기 실패. 에러 코드 : " << GetLastError() << std::endl;
-	}
+
+	//다 사용했으면 반납
+	delete[] fileBuffer;
 
 	//파일 핸들 닫기 (닫아줘야 메모리 누수가 없다.)
 	CloseHandle(hFile);
 	
-
 	return 0;
 }
 
