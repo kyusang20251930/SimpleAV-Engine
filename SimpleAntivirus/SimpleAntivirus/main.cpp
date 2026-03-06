@@ -37,8 +37,15 @@ int main(void) {
 
 	if (ReadFile(hFile, fileBuffer, fileSize, &bytesRead, NULL)) {
 		std::cout << "파일 전체를 메모리에 로드 했습니다. (" << bytesRead << " bytes)" << std::endl;
-
 		//이제 fileBuffer[0] 부터 fileBufer[fileSize-1] 까지 모든 데이터를 검사 할 수 있다.
+
+		//전체를 읽었으니 fileBuffer의 0번, 1번 인덱스를 확인한다.
+		if (bytesRead >= 2 && fileBuffer[0] == 'M' && fileBuffer[1] == 'Z') {
+			std::cout << "확인 결과 : 이 파일은 유효한 실행 파일 (MZ)입니다." << std::endl;
+		}
+		else {
+			std::cout << "경고 : 실행 파일(MZ) 형식이 아닙니다." << std::endl;
+		}
 	}
 
 	//다 사용했으면 반납
